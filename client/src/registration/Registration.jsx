@@ -5,14 +5,17 @@ import { useHistory } from 'react-router-dom';
 import InputComponent from '../common/input/inputComponent';
 import ButtonComponent from '../common/button/Button';
 import { Link } from 'react-router-dom';
-import { userSignup } from '../redux/actions/auth/authenticationAction';
+import { userSignup } from '../redux/actions/auth/authentication';
+import { useEffect } from 'react';
 
 const FormItem = Form.Item;
 
 const Registration = () => {
+    
     const [form] = Form.useForm();
     const dispatch = useDispatch();
     const history = useHistory();
+
     const onFinish = (values) => {
         dispatch(userSignup(values))
             .then((res) => {
@@ -20,7 +23,7 @@ const Registration = () => {
                     message: 'Signup Success',
                     description: 'Signup Success',
                 });
-                
+
                 // Routing After Signup Success
                 history.push('/login');
             })

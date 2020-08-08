@@ -1,4 +1,4 @@
-import * as types from "../actions/actionTypes";
+import * as types from "../actions/actionType";
 import { loadUserFromLocal } from "../../utils/localStorage";
 //
 const persistedState = loadUserFromLocal();

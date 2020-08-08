@@ -1,16 +1,38 @@
-import React from 'react';
-import { Form } from 'antd';
+import React, { useEffect } from 'react';
+import { Form, notification } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import InputComponent from '../common/input/inputComponent';
 import ButtonComponent from '../common/button/Button';
+import { userLogin } from '../redux/actions/auth/authentication';
 
 const FormItem = Form.Item;
 
 const Login = () => {
+    const isAuthenticated = useSelector((state) => state.Auth.isAuthenticated);
     const [form] = Form.useForm();
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            history.push('/home');
+        }
+    })
 
     const onFinish = (values) => {
-        console.log(values)
+        dispatch(userLogin(values))
+            .then((res) => {
+                notification.success({
+                    message: 'Login Success',
+                    description: 'Login Success',
+                });
+                this.props.history.push('/home');
+            })
+            .catch((err) => {
+                console.log('userLogin err', err);
+            });
     }
 
     return (
@@ -33,7 +55,7 @@ const Login = () => {
                                     </FormItem>
                                 </div>
                             </Form>
-                            <p className="text-center">Don't have an account ?<Link to={`/registration`} className="ml-1 pt-3">Create One</Link></p>
+                            <p className="text-center">Don't have an account ?<Link to={`/register`} className="ml-1 pt-3">Create One</Link></p>
                         </div>
                     </div>
                 </div>

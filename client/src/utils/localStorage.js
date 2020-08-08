@@ -32,6 +32,7 @@ export const getLocalState = key => {
 };
 
 export const setLocalState = (key, val) => {
+  console.log("key", key);
   try {
     localStorage.setItem(key, val);
   } catch (err) {

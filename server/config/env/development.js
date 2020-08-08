@@ -4,6 +4,7 @@ const devConfig = {
   jwt_expiration: 360000,
   dbConnectionString: `mongodb://localhost:27017/crud_api`,
   mongoDebug: true
+  // authToken:
 };
 
 export default devConfig;
