@@ -25,12 +25,8 @@ userController.register = async (req, res, next) => {
             });
           } else {
             const newUser = await userModel.create({
-              firstName: req.body.firstName,
-              lastName: req.body.lastName,
-              address: req.body.address,
+              name: req.body.name,
               email: req.body.email,
-              country: req.body.country,
-              phone: req.body.phone,
               password: hash
             });
             let { password, __v, ...user } = newUser.toObject();

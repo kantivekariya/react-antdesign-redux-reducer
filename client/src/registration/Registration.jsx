@@ -1,16 +1,32 @@
 import React from 'react';
-import { Form } from 'antd';
+import { Form, notification } from 'antd';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import InputComponent from '../common/input/inputComponent';
 import ButtonComponent from '../common/button/Button';
 import { Link } from 'react-router-dom';
+import { userSignup } from '../redux/actions/auth/authenticationAction';
 
 const FormItem = Form.Item;
 
 const Registration = () => {
     const [form] = Form.useForm();
-
+    const dispatch = useDispatch();
+    const history = useHistory();
     const onFinish = (values) => {
-        console.log(values)
+        dispatch(userSignup(values))
+            .then((res) => {
+                notification.success({
+                    message: 'Signup Success',
+                    description: 'Signup Success',
+                });
+                
+                // Routing After Signup Success
+                history.push('/login');
+            })
+            .catch((err) => {
+                console.log('checkUserSignup err', err);
+            });
     }
     return (
         <>
@@ -30,7 +46,7 @@ const Registration = () => {
                                     <FormItem className="form-group col-md-12 pt-4" name="password" rules={[{ required: true, message: 'Password is required!' }]}>
                                         <InputComponent placeholder="Password" type="password" />
                                     </FormItem>
-                                    <FormItem className="form-group col-md-12 pt-4 pb-4" name="confirmpwd" rules={[{ required: true, message: 'Repeat Password is required!' }]}>
+                                    <FormItem className="form-group col-md-12 pt-4 pb-4" name="confirmpwd" rules={[{ required: false, message: 'Repeat Password is required!' }]}>
                                         <InputComponent placeholder="Repeat Password" type="password" />
                                     </FormItem>
                                     <FormItem className="col-md-12 mt-4 text-center">
@@ -38,7 +54,7 @@ const Registration = () => {
                                     </FormItem>
                                 </div>
                             </Form>
-                            <p className="text-center">Have already an account?<Link to={`/login`} className="ml-3 pt-3">Login Here</Link></p>
+                            <p className="text-center">Have already an account?<Link to={`/login`} className="ml-1 pt-3">Login Here</Link></p>
                         </div>
                     </div>
                 </div>

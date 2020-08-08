@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import morgan from "morgan";
+import cors from "cors";
 import mainRouter from "./routes";
 import connectMongo from "./config/mongoconnect";
 
@@ -9,7 +10,7 @@ const app = express();
 // Production enviroment
 const isProduction = process.env.NODE_ENV === "production";
 app.use(bodyParser.json());
-
+app.use(cors());
 //https debug
 app.use(morgan("dev"));
 
