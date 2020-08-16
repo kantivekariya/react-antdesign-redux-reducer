@@ -1,5 +1,5 @@
 import express from "express";
-import userController from "./crud.controller";
+import userController from "./auth.controller";
 import { asyncWrapper } from "../../utils/asyncWrapper";
 
 const crudRoutes = express.Router();
@@ -13,6 +13,9 @@ crudRoutes.post("/register", asyncWrapper(userController.register));
 
 // Login
 crudRoutes.post("/login", asyncWrapper(userController.login));
+
+// Logout
+crudRoutes.get("/logout", asyncWrapper(userController.logout));
 
 //GetAll Data
 crudRoutes.get("/users", asyncWrapper(userController.findAll));

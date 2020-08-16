@@ -32,7 +32,6 @@ export const getLocalState = key => {
 };
 
 export const setLocalState = (key, val) => {
-  console.log("key", key);
   try {
     localStorage.setItem(key, val);
   } catch (err) {
@@ -45,17 +44,6 @@ export const loadUserFromLocal = () => {
     const expires_in = getLocalState("expires_in");
     const expires_at = getLocalState("expires_at");
     const access_token = getLocalState("access_token");
-    // const refresh_token = getLocalState("refresh_token");
-    // console.log("access_token", access_token);
-    // console.log("refresh_token", refresh_token);
-    // console.log("new Date().getTime()", new Date().getTime());
-    // console.log("expires_in", expires_in);
-    // console.log("expires_at", expires_at);
-    console.log(
-      "new Date().getTime() < expires_at",
-      new Date().getTime() < expires_at
-    );
-    //alert(expires_in && access_token && new Date().getTime() < expires_at)
     if (expires_in && access_token && new Date().getTime() < expires_at) {
       // authorize
       return {

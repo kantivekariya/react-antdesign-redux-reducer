@@ -9,5 +9,6 @@ const prod = {
 const config = process.env.NODE_ENV === "production" ? prod : dev;
 
 export default {
-  ...config
+  ...config,
+  TIMEOUT: 60000
 };

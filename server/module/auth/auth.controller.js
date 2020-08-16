@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { userModel } from "./crud.model";
+import { userModel } from "./auth.model";
 import httpStatus from "../../utils/httpStatus";
 import appConfig from "../../config/env";
 
@@ -141,6 +141,14 @@ userController.delete = async (req, res) => {
   } catch (error) {
     return res.status(500).json({ error: error.toString() });
   }
+};
+
+userController.logout = async (req, res) => {
+  console.log("req.user", req.user);
+  blacklist.purge(req.user);
+  return res.json({
+    toekn: req.headers.authorization
+  });
 };
 
 export default userController;

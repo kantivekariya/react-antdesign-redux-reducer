@@ -28,7 +28,7 @@ const Login = () => {
                     message: 'Login Success',
                     description: 'Login Success',
                 });
-                this.props.history.push('/home');
+                history.push('/home');
             })
             .catch((err) => {
                 console.log('userLogin err', err);
