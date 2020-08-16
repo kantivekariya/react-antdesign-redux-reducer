@@ -58,6 +58,7 @@ userController.login = async (req, res, next) => {
           const token = jwt.sign(
             {
               email: user[0].email,
+              name: user[0].name,
               userId: user[0].id
             },
             appConfig.jwt_key,
