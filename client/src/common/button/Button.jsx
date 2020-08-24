@@ -5,6 +5,7 @@ const ButtonComponent = (props) => {
     return (
         <>
             <Button
+                onClick={props.onClick ? props.onClick : ''}
                 htmlType={props.type}
                 className="btn btn-secondary">
                 {props.btnName}

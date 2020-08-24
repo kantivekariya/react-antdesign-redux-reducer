@@ -42,8 +42,5 @@ const NoMatchRoute = {
     component: PageNotFound,
 };
 
-/**
- * Compile Core, Component and NoMatch Routes
- */
-const routes = [...CoreRoutes, PageNotFound];
+const routes = [...CoreRoutes, NoMatchRoute];
 export default routes;

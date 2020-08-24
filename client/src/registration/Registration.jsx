@@ -1,20 +1,17 @@
 import React from 'react';
 import { Form, notification } from 'antd';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import InputComponent from '../common/input/inputComponent';
 import ButtonComponent from '../common/button/Button';
 import { Link } from 'react-router-dom';
 import { userSignup } from '../redux/actions/auth/authentication';
-import { useEffect } from 'react';
 
 const FormItem = Form.Item;
 
-const Registration = () => {
+const Registration = (props) => {
     
     const [form] = Form.useForm();
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const onFinish = (values) => {
         dispatch(userSignup(values))
@@ -25,7 +22,7 @@ const Registration = () => {
                 });
 
                 // Routing After Signup Success
-                history.push('/login');
+                props.history.push('/login');
             })
             .catch((err) => {
                 console.log('checkUserSignup err', err);

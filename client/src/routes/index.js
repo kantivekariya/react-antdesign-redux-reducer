@@ -6,9 +6,7 @@ import PrivateRoute from "./Private";
 import PublicRoute from "./Public";
 import routes from "./Routes";
 
-const Routes = () => {
-  const isAuthenticated = useSelector(state => state.Auth.isAuthenticated);
-
+const Routes = (props) => {
   return (
     <>
       <Router>
@@ -18,7 +16,7 @@ const Routes = () => {
               return (
                 <PrivateRoute
                   key={i}
-                  isAuthenticated={isAuthenticated}
+                  isAuthenticated={props.isAuthenticated}
                   {...route}
                 />
               );
@@ -26,7 +24,7 @@ const Routes = () => {
               return (
                 <PublicRoute
                   key={i}
-                  isAuthenticated={isAuthenticated}
+                  isAuthenticated={props.isAuthenticated}
                   {...route}
                 />
               );
@@ -41,7 +39,7 @@ const Routes = () => {
 // export default Routes;
 const mapStateToProps = state => {
   return {
-    isAuthenticated: state.Auth.isAuthenticated
+    isAuthenticated: state.Auth.isAuthenticated,
   };
 };
 

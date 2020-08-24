@@ -4,7 +4,7 @@ import { asyncWrapper } from "../../utils/asyncWrapper";
 
 const crudRoutes = express.Router();
 
-crudRoutes.get("/", function(req, res, next) {
+crudRoutes.get("/", function (req, res, next) {
   res.json({ message: "from index api" });
 });
 
@@ -13,6 +13,9 @@ crudRoutes.post("/register", asyncWrapper(userController.register));
 
 // Login
 crudRoutes.post("/login", asyncWrapper(userController.login));
+
+// me
+crudRoutes.get('/me', asyncWrapper(userController.me));
 
 // Logout
 crudRoutes.get("/logout", asyncWrapper(userController.logout));

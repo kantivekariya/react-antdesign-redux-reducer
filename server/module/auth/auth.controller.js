@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import blacklist from 'express-jwt-blacklist';
 import { userModel } from "./auth.model";
 import httpStatus from "../../utils/httpStatus";
 import appConfig from "../../config/env";
@@ -142,6 +143,13 @@ userController.delete = async (req, res) => {
   } catch (error) {
     return res.status(500).json({ error: error.toString() });
   }
+};
+
+userController.me = async (req, res) => {
+  console.log('req.user', req.users);
+  return res.json({
+    email: req.user.email
+  });
 };
 
 userController.logout = async (req, res) => {

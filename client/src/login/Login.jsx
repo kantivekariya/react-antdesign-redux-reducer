@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Form, notification } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import InputComponent from '../common/input/inputComponent';
 import ButtonComponent from '../common/button/Button';
@@ -9,15 +8,14 @@ import { userLogin } from '../redux/actions/auth/authentication';
 
 const FormItem = Form.Item;
 
-const Login = () => {
-    const isAuthenticated = useSelector((state) => state.Auth.isAuthenticated);
+const Login = (props) => {
+    console.log('props22', props)
     const [form] = Form.useForm();
     const dispatch = useDispatch();
-    const history = useHistory();
 
     useEffect(() => {
-        if (isAuthenticated) {
-            history.push('/home');
+        if (props.isAuthenticated) {
+            props.history.push('/home');
         }
     })
 
@@ -28,7 +26,7 @@ const Login = () => {
                     message: 'Login Success',
                     description: 'Login Success',
                 });
-                history.push('/home');
+                props.history.push('/home');
             })
             .catch((err) => {
                 console.log('userLogin err', err);
