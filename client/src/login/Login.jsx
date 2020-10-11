@@ -9,7 +9,6 @@ import { userLogin } from '../redux/actions/auth/authentication';
 const FormItem = Form.Item;
 
 const Login = (props) => {
-    console.log('props22', props)
     const [form] = Form.useForm();
     const dispatch = useDispatch();
 

@@ -3,6 +3,7 @@ import Home from '../home/Home';
 import Registration from '../registration/Registration';
 import LandingPage from '../site/LandingPage';
 import PageNotFound from '../site/PageNotFound';
+import Dashboard from '../module/dashboard/Dashboard';
 
 const CoreRoutes = [
     {
@@ -31,7 +32,14 @@ const CoreRoutes = [
         auth: true,
         title: 'Home',
         component: Home,
-    },
+        routes: [
+          {
+            path: '/home/dashboard',
+            title: 'Dashboard',
+            component: Dashboard,
+          },
+        ],
+      },
 ];
 
 const NoMatchRoute = {

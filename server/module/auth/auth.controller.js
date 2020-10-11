@@ -1,87 +1,58 @@
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 import blacklist from 'express-jwt-blacklist';
 import { userModel } from "./auth.model";
 import httpStatus from "../../utils/httpStatus";
-import appConfig from "../../config/env";
 
 const userController = {};
 
 // Create User
-userController.register = async (req, res, next) => {
-  userModel
-    .find({ email: req.body.email })
-    .exec()
-    .then(user => {
-      if (user.length >= 1) {
-        return res.status(httpStatus.CONFLICT).json({
-          message: "Mail exists"
-        });
-      } else {
-        bcrypt.hash(req.body.password, 10, async (err, hash) => {
-          console.log(hash);
-          if (err) {
-            return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
-              error: err
-            });
-          } else {
-            const newUser = await userModel.create({
-              name: req.body.name,
-              email: req.body.email,
-              password: hash
-            });
-            let { password, __v, ...user } = newUser.toObject();
-            return res.status(httpStatus.CREATED).json({ data: { user } });
-          }
-        });
-      }
-    });
+userController.register = async (req, res) => {
+  let newUser = await userModel.create({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+  });
+  let { password, __v, ...user } = newUser.toObject();
+  return res.status(httpStatus.CREATED).json({ data: { user } });
 };
 
 // Login user
-userController.login = async (req, res, next) => {
-  userModel
-    .find({ email: req.body.email })
-    .exec()
-    .then(user => {
-      if (user.length < 1) {
-        return res.status(httpStatus.UNAUTHORIZED).json({
-          message: "Auth failed"
-        });
-      }
-      bcrypt.compare(req.body.password, user[0].password, (err, result) => {
-        if (err) {
-          return res.status(httpStatus.UNAUTHORIZED).json({
-            message: "Auth failed"
-          });
-        }
-        if (result) {
-          const token = jwt.sign(
-            {
-              email: user[0].email,
-              name: user[0].name,
-              userId: user[0].id
-            },
-            appConfig.jwt_key,
-            {
-              expiresIn: appConfig.jwt_expiration
-            }
-          );
-          return res.status(httpStatus.OK).json({
-            message: "Auth successful",
-            token: token
-          });
-        }
-        res.status(httpStatus.UNAUTHORIZED).json({
-          message: "Auth failed"
-        });
+userController.login = async (req, res) => {
+  try {
+    const email = req.body.email;
+    const user = await userModel.findOne({ email: email });
+    if (!user) {
+      return res.status(httpStatus.UNPROCESSABLE_ENTITY).json({
+        errors: [
+          {
+            location: 'body',
+            param: 'email',
+            value: email,
+            msg: 'User not found',
+          },
+        ],
       });
-    })
-    .catch(err => {
-      res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
-        error: err
+    }
+
+    let isMatch = await user.matchPasswords(req.body.password);
+    console.log("isMatch", isMatch)
+    if (!isMatch) {
+      return res.status(httpStatus.UNPROCESSABLE_ENTITY).json({
+        errors: [
+          {
+            location: 'body',
+            param: 'password',
+            value: '',
+            msg: 'Incorrect Password',
+          },
+        ],
       });
+    }
+    return res.json({
+      token: user.generateJWT(false),
     });
+  } catch (error) {
+    throw error;
+  }
 };
 
 // Get All Users
@@ -146,9 +117,9 @@ userController.delete = async (req, res) => {
 };
 
 userController.me = async (req, res) => {
-  console.log('req.user', req.users);
   return res.json({
-    email: req.user.email
+    email: req.user.email,
+    name: req.user.name
   });
 };
 

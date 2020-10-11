@@ -9,7 +9,7 @@ import { onLocalLogin } from './redux/actions/auth/authentication';
 
 setupAxios();
 const store = configureStore();
-// store.dispatch(onLocalLogin());
+store.dispatch(onLocalLogin());
 const App = () => {
   return (
     <>
