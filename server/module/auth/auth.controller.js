@@ -124,7 +124,6 @@ userController.me = async (req, res) => {
 };
 
 userController.logout = async (req, res) => {
-  console.log("req.user", req.user);
   blacklist.purge(req.user);
   return res.json({
     toekn: req.headers.authorization

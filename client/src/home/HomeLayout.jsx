@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Layout } from 'antd';
-import SiteFooter from '../../common/admin/Footer';
-import SiteHeader from '../../common/admin/Header';
+import SiteFooter from '../common/admin/Footer';
+import SiteHeader from '../common/admin/Header';
 
 const HomeLayout = (props) => {
-  console.log(props)
   return (
     <Layout>
       <Layout>
