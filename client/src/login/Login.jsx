@@ -41,10 +41,10 @@ const Login = (props) => {
                             <h2 className="text-primary h4 text-center">Login</h2>
                             <Form form={form} name="form" onFinish={onFinish}>
                                 <div className="row">
-                                    <FormItem className="form-group col-md-12 pt-4" name="email" rules={[{ required: true, message: 'First Name is required!' }]}>
+                                    <FormItem className="form-group col-md-12 pt-4" name="email" rules={[{ required: true, message: 'Email is required!' }]}>
                                         <InputComponent placeholder="Email" />
                                     </FormItem>
-                                    <FormItem className="form-group col-md-12 pt-4 pb-4" name="password" rules={[{ required: true, message: 'Last Name is required!' }]}>
+                                    <FormItem className="form-group col-md-12 pt-4 pb-4" name="password" rules={[{ required: true, message: 'Passowrd is required!' }]}>
                                         <InputComponent placeholder="Password" type="password" />
                                     </FormItem>
                                     <FormItem className="col-md-12 mt-4">

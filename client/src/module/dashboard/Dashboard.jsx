@@ -3,7 +3,9 @@ import React from 'react';
 const Dashboard = () => {
     return (
         <>
-            <h1>Dashboard</h1>
+            <div className="container-fluid wrapper">
+                <h1>Dashboard</h1>
+            </div>
         </>
     )
 

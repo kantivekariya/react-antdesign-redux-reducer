@@ -1,6 +1,6 @@
-import { loadUserFromLocal } from '../../utils/localStorage';
+import { loadUserFromLocal } from "../../utils/localStorage";
 const persistedState = loadUserFromLocal();
 export default {
   auth: Object.assign(persistedState, { userInfo: {} }),
-  layout: { collapsed: false },
+  layout: { collapsed: false }
 };

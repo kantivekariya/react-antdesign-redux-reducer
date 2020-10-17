@@ -1,6 +1,6 @@
-import * as types from './actionType';
+import * as types from "./actionType";
 export function layoutToggele() {
-  return async (dispatch) => {
+  return async dispatch => {
     dispatch({ type: types.LAYOUT_SIDEBAR_TOGGLE });
   };
 }

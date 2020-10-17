@@ -2,7 +2,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import * as types from "../actionType";
 import config from "../../../config/Config";
-import { getLocalState,setLocalState } from "../../../utils/localStorage";
+import { getLocalState, setLocalState } from "../../../utils/localStorage";
 
 // SignUp
 export function userSignup(params) {
@@ -36,7 +36,6 @@ export function userLogin(params) {
   };
 }
 
-
 export function userLogout() {
   return async dispatch => {
     dispatch({ type: types.AUTH_LOOUT_REQUEST });
@@ -53,7 +52,7 @@ export function userLogout() {
 }
 
 export function getUserProfile() {
-  return async (dispatch) => {
+  return async dispatch => {
     dispatch({ type: types.AUTH_ME_REQUEST });
     try {
       const res = await axios.get(`${config.BASE_URL}/me`);
@@ -77,16 +76,16 @@ export function saveTokens(params) {
 
 export function onLocalLogin() {
   return (dispatch, getState) => {
-    const _expiresAt = getLocalState('expires_at');
-    const access_token = getLocalState('access_token');
+    const _expiresAt = getLocalState("expires_at");
+    const access_token = getLocalState("access_token");
     if (_expiresAt && access_token && new Date().getTime() < _expiresAt) {
-      console.log("_expiresAt", access_token)
+      console.log("_expiresAt", access_token);
       // authorize
-      console.log('onLocalLogin - authorize');
+      console.log("onLocalLogin - authorize");
       return dispatch(getUserProfile());
     } else {
       //unauth
-      console.log('onLocalLogin - unauth');
+      console.log("onLocalLogin - unauth");
       localStorage.clear();
     }
   };

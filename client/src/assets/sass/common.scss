@@ -1,0 +1,40 @@
+.wrapper {
+    padding: 2.5rem;
+}
+
+.ajax-global-spin {
+    .ant-spin {
+        height: 100vh !important;
+        max-height: unset !important;
+    }
+}
+
+.ajax-global-spin {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.user-avtar-img {
+    width: 50px;
+    height: 40px;
+}
+
+.width-22 {
+    width: 1.375rem;
+}
+.height-22 {
+    height: 1.375rem;
+}
+
+.height-60 {
+    height: 3.75rem !important;
+}

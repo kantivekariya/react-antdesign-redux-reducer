@@ -19,8 +19,8 @@ const LeftSidebarPanel = (props) => {
           key={menu.key}
           title={
             <span>
-              <Icon className="hideon-hover" component={() => <img alt="submenu-hideon" src={menu.icon} />} />
-              <Icon className="d-none hover-icon" component={() => <img alt="submenu-d-none" src={menu.iconHover} />} />
+              <Icon className="" component={() => <img alt="submenu-hideon" src={menu.icon} />} />
+              {/* <Icon className="d-none hover-icon" component={() => <img alt="submenu-d-none" src={menu.iconHover} />} /> */}
               <span>{menu.name}</span>
             </span>
           }
@@ -37,8 +37,8 @@ const LeftSidebarPanel = (props) => {
     } else {
       return (
         <Menu.Item className="height-60 d-flex align-items-center" key={menu.key}>
-          <Icon className="hideon-hover" component={() => <img alt="submenu-hideon" src={menu.icon} />} />
-          <Icon className="d-none hover-icon" component={() => <img alt="submenu-d-none" src={menu.iconHover} />} />
+          <Icon className="" component={() => <img className="height-22 width-22"  alt="submenu-hideon" src={menu.icon} />} />
+          {/* <Icon className="d-none hover-icon" component={() => <img alt="submenu-d-none" src={menu.iconHover} />} /> */}
           <Link to={menu.path}>
             <span>{menu.name}</span>
           </Link>
@@ -77,10 +77,12 @@ const LeftSidebarPanel = (props) => {
       <Sider width="310" trigger={null} collapsible collapsed={props.isCollapsed}>
         <div className="logo">
           <Link to={``}>
-            <img className="expand" src={require('../assets/images/shipments.svg')} title="Mware" alt="Mware" />
+            {/* <img className="expand" src={require('../assets/images/shipments.svg')} title="shrihari" alt="shrihari" /> */}
+            <h3 className="expand" style={{color: '#fff'}}>SHRI HARI</h3>
           </Link>
           <Link to={``}>
-            <img className="collapsed" src={require('../assets/images/shipments.svg')} title="Mware" alt="Mware" />
+            {/* <img className="collapsed" src={require('../assets/images/shipments.svg')} title="shrihari" alt="shrihari" /> */}
+            <h3 className="collapsed" style={{color: '#fff'}}>SHRI HARI</h3>
           </Link>
         </div>
         <Menu className="mt-4" mode="inline" defaultSelectedKeys={defaultSelectedKey()} defaultOpenKeys={defaultSelectedOpenKey()}>

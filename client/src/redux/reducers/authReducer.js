@@ -3,7 +3,7 @@ import { loadUserFromLocal } from "../../utils/localStorage";
 //
 const persistedState = loadUserFromLocal();
 const initialState = Object.assign(persistedState, { userInfo: {} });
-console.log("initialState", initialState)
+console.log("initialState", initialState);
 //
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {

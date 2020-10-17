@@ -2,6 +2,7 @@ import Login from '../login/Login';
 import Account from '../module/Account/Account';
 import Home from '../module/dashboard';
 import Dashboard from '../module/dashboard/Dashboard';
+import Invoice from '../module/Invoice/invoice';
 import Registration from '../registration/Registration';
 import LandingPage from '../site/LandingPage';
 import PageNotFound from '../site/PageNotFound';
@@ -38,6 +39,12 @@ const CoreRoutes = [
         path: '/home/dashboard',
         title: 'Dashboard',
         component: Dashboard,
+      },
+      {
+        path: '/home/invoice',
+        auth: true,
+        title: 'Invoice',
+        component: Invoice,
       },
       {
         path: '/home/account',

@@ -1,6 +1,8 @@
 @import 'assets/sass/custom-variables';
 @import "~bootstrap/scss/bootstrap";
 @import 'assets/sass/layout.scss';
+@import 'assets/sass/common.scss';
+@import 'assets/sass/suspense-loader.scss';
 
 .auth {
     background-color: #f5f6fa;
