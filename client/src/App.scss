@@ -1,5 +1,6 @@
 @import 'assets/sass/custom-variables';
 @import "~bootstrap/scss/bootstrap";
+@import 'assets/sass/form-control.scss';
 @import 'assets/sass/layout.scss';
 @import 'assets/sass/common.scss';
 @import 'assets/sass/suspense-loader.scss';
@@ -28,19 +29,4 @@
     }
 }
 
-.form-control {
-    display: block;
-    width: 100%;
-    height: calc(1.5em + 1.38rem + 2px);
-    padding: 0.75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.188;
-    color: #67748b;
-    background-color: #fafbff;
-    background-clip: padding-box;
-    border: 1px solid #e9edf4;
-    border-radius: 0.25rem;
-    -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
+

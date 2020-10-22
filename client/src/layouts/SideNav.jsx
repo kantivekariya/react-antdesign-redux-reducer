@@ -13,6 +13,12 @@ const SideMenu = [
     },
     {
         key: 'dash_3',
+        name: 'Taxes',
+        icon: require('../assets/images/taxes.svg'),
+        path: '/home/taxes',
+    },
+    {
+        key: 'dash_4',
         name: 'Account',
         icon: require('../assets/images/accounting.svg'),
         path: '/home/account',

@@ -9,7 +9,7 @@ export function userSignup(params) {
   return async dispatch => {
     dispatch({ type: types.AUTH_SIGNUP_REQUEST });
     try {
-      const res = await axios.post(`${config.BASE_URL}/register`, params);
+      const res = await axios.post(`${config.BASE_URL}/auth/register`, params);
       dispatch({ type: types.AUTH_SIGNUP_SUCCESS, payload: res });
       return res;
     } catch (error) {
@@ -24,7 +24,7 @@ export function userLogin(params) {
   return async dispatch => {
     dispatch({ type: types.AUTH_LOGIN_REQUEST });
     try {
-      const res = await axios.post(`${config.BASE_URL}/login`, params);
+      const res = await axios.post(`${config.BASE_URL}/auth/login`, params);
       const decoded = jwt_decode(res.token);
       saveTokens({ access_token: res.token, expires_in: decoded.exp });
       dispatch({ type: types.AUTH_LOGIN_SUCCESS, payload: decoded });
@@ -40,7 +40,7 @@ export function userLogout() {
   return async dispatch => {
     dispatch({ type: types.AUTH_LOOUT_REQUEST });
     try {
-      const res = await axios.get(`${config.BASE_URL}/logout`);
+      const res = await axios.get(`${config.BASE_URL}/auth/logout`);
       dispatch({ type: types.AUTH_LOOUT_SUCCESS, payload: res });
       localStorage.clear();
       return res;
@@ -55,7 +55,7 @@ export function getUserProfile() {
   return async dispatch => {
     dispatch({ type: types.AUTH_ME_REQUEST });
     try {
-      const res = await axios.get(`${config.BASE_URL}/me`);
+      const res = await axios.get(`${config.BASE_URL}/auth/me`);
       dispatch({ type: types.AUTH_LOGIN_SUCCESS, payload: res });
       return res;
     } catch (error) {

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Form, notification } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import InputComponent from '../common/input/inputComponent';
 import ButtonComponent from '../common/button/Button';

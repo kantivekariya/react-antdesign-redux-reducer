@@ -1,8 +1,10 @@
+import { lazy } from 'react';
 import Login from '../login/Login';
 import Account from '../module/Account/Account';
 import Home from '../module/dashboard';
 import Dashboard from '../module/dashboard/Dashboard';
 import Invoice from '../module/Invoice/invoice';
+import Taxes from '../module/Taxes/taxes';
 import Registration from '../registration/Registration';
 import LandingPage from '../site/LandingPage';
 import PageNotFound from '../site/PageNotFound';
@@ -45,6 +47,12 @@ const CoreRoutes = [
         auth: true,
         title: 'Invoice',
         component: Invoice,
+      },
+      {
+        path: '/home/taxes',
+        auth: true,
+        title: 'Taxes',
+        component: Taxes,
       },
       {
         path: '/home/account',

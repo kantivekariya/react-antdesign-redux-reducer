@@ -1,7 +1,7 @@
 const devConfig = {
   //database
   jwtSecret: "myS33!!creeeT",
-  jwtDuration: 60000,
+  jwtDuration: '10m',
   dbConnectionString: `mongodb://localhost:27017/invoice`,
   mongoDebug: true
   // authToken:

@@ -1,7 +1,7 @@
 const prodConfig = {
   //database
   jwtSecret: "myS33!!creeeT",
-  jwt_expiration: 360000,
+  jwtDuration: '10m',
   dbConnectionString: `Prod URL`,
   mongoDebug: false
 };
