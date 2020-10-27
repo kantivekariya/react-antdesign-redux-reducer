@@ -1,21 +1,23 @@
-import jwt from 'express-jwt';
-import blacklist from 'express-jwt-blacklist';
-import appConfig from './env';
+import jwt from "express-jwt";
+import blacklist from "express-jwt-blacklist";
+import appConfig from "./env";
 
-const getTokenFromHeader = (req) => {
-  console.log(req)
+const getTokenFromHeader = req => {
+  console.log(req);
   if (
-    (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Token') ||
-    (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer')
+    (req.headers.authorization &&
+      req.headers.authorization.split(" ")[0] === "Token") ||
+    (req.headers.authorization &&
+      req.headers.authorization.split(" ")[0] === "Bearer")
   ) {
-    return req.headers.authorization.split(' ')[1];
+    return req.headers.authorization.split(" ")[1];
   }
   return null;
 };
 
 blacklist.debug = true;
 blacklist.configure({
-  tokenId: 'jti',
+  tokenId: "jti"
   // strict: true,
   // store: {
   //     type: 'memcached',
@@ -30,19 +32,20 @@ blacklist.configure({
 
 const authRequired = jwt({
   secret: appConfig.jwtSecret,
-  algorithms: ['HS256'],
-  userProperty: 'user',
+  algorithms: ["HS256"],
+  userProperty: "user",
   credentialsRequired: false,
   isRevoked: blacklist.isRevoked,
-  getToken: getTokenFromHeader,
+  getToken: getTokenFromHeader
 });
 
+console.log("authRequired", authRequired);
 const authOptional = jwt({
   secret: appConfig.jwtSecret,
-  algorithms: ['HS256'],
-  userProperty: 'user',
+  algorithms: ["HS256"],
+  userProperty: "user",
   credentialsRequired: false,
-  getToken: getTokenFromHeader,
+  getToken: getTokenFromHeader
 });
 
 export { authRequired, authOptional };

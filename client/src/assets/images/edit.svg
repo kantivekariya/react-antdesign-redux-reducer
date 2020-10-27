@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <desc>Created with Lunacy</desc>
+  <g id="ic_Edit">
+    <path d="M0 0L24 0L24 24L0 24L0 0Z" id="Rectangle" fill="none" stroke="none" />
+    <path d="M0 0L24 0L24 24L0 24L0 0Z" id="Rectangle" fill="none" stroke="none" />
+    <g id="edit" transform="translate(2 2.153839)">
+      <path d="M0 0L20 0L20 1.7L0 1.7L0 0Z" transform="translate(0 18.84616)" id="Rectangle" fill="#ADB6C6" stroke="none" />
+      <path d="M0 15.4872L0.0168067 12.1538C0.0168067 11.9658 0.10084 11.7949 0.218487 11.6581L9.22689 2.51282L11.479 0.205128C11.7647 -0.0683761 12.2017 -0.0683761 12.4706 0.205128L15.6975 3.52137C15.9664 3.81197 15.9664 4.25641 15.6975 4.52991L4.43698 15.9829C4.30252 16.1197 4.13445 16.188 3.94958 16.188L0.689076 16.2051C0.504202 16.2051 0.336134 16.1368 0.201681 16C0.0672269 15.8632 0 15.6752 0 15.4872ZM11.9832 1.7094L14.2521 4.01709L12.9748 5.31624L10.7059 3.00855L11.9832 1.7094ZM9.71428 4.01709L1.41176 12.4615L1.39496 14.7692L3.68067 14.7521L11.9832 6.32479L9.71428 4.01709Z" transform="translate(0.1005859 0)" id="Shape" fill="#ADB6C6" fill-rule="evenodd" stroke="none" />
+    </g>
+  </g>
+</svg>

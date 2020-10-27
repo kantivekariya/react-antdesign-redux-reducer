@@ -1,4 +1,4 @@
-import blacklist from 'express-jwt-blacklist';
+import blacklist from "express-jwt-blacklist";
 import { userModel } from "./auth.model";
 import httpStatus from "../../utils/httpStatus";
 
@@ -9,7 +9,7 @@ userController.register = async (req, res) => {
   let newUser = await userModel.create({
     name: req.body.name,
     email: req.body.email,
-    password: req.body.password,
+    password: req.body.password
   });
   let { password, __v, ...user } = newUser.toObject();
   return res.status(httpStatus.CREATED).json({ data: { user } });
@@ -24,31 +24,31 @@ userController.login = async (req, res) => {
       return res.status(httpStatus.UNPROCESSABLE_ENTITY).json({
         errors: [
           {
-            location: 'body',
-            param: 'email',
+            location: "body",
+            param: "email",
             value: email,
-            msg: 'User not found',
-          },
-        ],
+            msg: "User not found"
+          }
+        ]
       });
     }
 
     let isMatch = await user.matchPasswords(req.body.password);
-    console.log("isMatch", isMatch)
+    console.log("isMatch", isMatch);
     if (!isMatch) {
       return res.status(httpStatus.UNPROCESSABLE_ENTITY).json({
         errors: [
           {
-            location: 'body',
-            param: 'password',
-            value: '',
-            msg: 'Incorrect Password',
-          },
-        ],
+            location: "body",
+            param: "password",
+            value: "",
+            msg: "Incorrect Password"
+          }
+        ]
       });
     }
     return res.json({
-      token: user.generateJWT(false),
+      token: user.generateJWT(false)
     });
   } catch (error) {
     throw error;

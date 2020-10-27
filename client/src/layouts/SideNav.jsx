@@ -7,8 +7,8 @@ const SideMenu = [
     },
     {
         key: 'dash_2',
-        name: 'Invoice',
-        icon: require('../assets/images/billing-machine.svg'),
+        name: 'Sales',
+        icon: require('../assets/images/shopping-cart.svg'),
         path: '/home/Invoice',
     },
     {

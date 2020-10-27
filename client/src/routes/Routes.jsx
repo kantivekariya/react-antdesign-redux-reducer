@@ -3,7 +3,7 @@ import Login from '../login/Login';
 import Account from '../module/Account/Account';
 import Home from '../module/dashboard';
 import Dashboard from '../module/dashboard/Dashboard';
-import Invoice from '../module/Invoice/invoice';
+import Sales from '../module/sales/sales';
 import Taxes from '../module/Taxes/taxes';
 import Registration from '../registration/Registration';
 import LandingPage from '../site/LandingPage';
@@ -46,7 +46,7 @@ const CoreRoutes = [
         path: '/home/invoice',
         auth: true,
         title: 'Invoice',
-        component: Invoice,
+        component: Sales,
       },
       {
         path: '/home/taxes',

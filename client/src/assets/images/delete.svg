@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <desc>Created with Lunacy</desc>
+  <g id="ic_delete">
+    <path d="M0 0L24 0L24 24L0 24L0 0Z" id="Rectangle" fill="none" stroke="none" />
+    <path d="M0 0L24 0L24 24L0 24L0 0Z" id="Rectangle" fill="none" stroke="none" />
+    <g id="709519" transform="translate(3 2)">
+      <g id="Group" transform="translate(0 2.96875)">
+        <path d="M1.93844 0.0574219L0.345379 0L0 9.26891L1.59306 9.32609L1.93844 0.0574219Z" transform="translate(11.44003 3.869375)" id="Path" fill="#ADB6C6" stroke="none" />
+        <path d="M0 0L1.59409 0L1.59409 9.26895L0 9.26895L0 0Z" transform="translate(8.702954 3.898086)" id="Rectangle" fill="#ADB6C6" stroke="none" />
+        <path d="M1.93844 9.26895L1.59306 0L0 0.0574609L0.345418 9.32637L1.93844 9.26895Z" transform="translate(5.621257 3.869102)" id="Path" fill="#ADB6C6" stroke="none" />
+        <path d="M0 1.56656L0 0L18.9699 0L18.9699 1.56656L17.282 1.56656L15.9642 16.2825C15.9283 16.687 15.5835 16.9974 15.1703 16.9974L3.77269 16.9974C3.35958 16.9974 3.01496 16.6872 2.97883 16.2828L1.66107 1.56656L0 1.56656ZM4.50256 15.4308L14.4402 15.4308L15.6818 1.56656L3.26128 1.56656L4.50256 15.4308Z" transform="translate(0.01506485 0.03386719)" id="Shape" fill="#ADB6C6" fill-rule="evenodd" stroke="none" />
+      </g>
+      <path d="M6.53584 0L1.32841 0C0.595916 0 0 0.585625 0 1.30547L0 3.7859L1.59409 3.7859L1.59409 1.56656L6.27016 1.56656L6.27016 3.7859L7.86425 3.7859L7.86425 1.30547C7.86425 0.585625 7.26833 0 6.53584 0Z" transform="translate(5.567874 0)" id="Path" fill="#ADB6C6" stroke="none" />
+    </g>
+  </g>
+</svg>

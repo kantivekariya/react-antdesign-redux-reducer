@@ -1,11 +1,11 @@
 import express from "express";
 import userController from "./auth.controller";
 import { asyncWrapper } from "../../utils/asyncWrapper";
-import { authRequired } from '../../config/auth';
+import { authRequired } from "../../config/auth";
 
 const authRoutes = express.Router();
 
-authRoutes.get("/", function (req, res, next) {
+authRoutes.get("/", function(req, res, next) {
   res.json({ message: "from index api" });
 });
 
@@ -16,7 +16,7 @@ authRoutes.post("/register", asyncWrapper(userController.register));
 authRoutes.post("/login", asyncWrapper(userController.login));
 
 // me
-authRoutes.get('/me', authRequired, asyncWrapper(userController.me));
+authRoutes.get("/me", authRequired, asyncWrapper(userController.me));
 
 // Logout
 authRoutes.get("/logout", authRequired, asyncWrapper(userController.logout));

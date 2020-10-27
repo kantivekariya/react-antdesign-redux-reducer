@@ -1,9 +1,9 @@
-import produce from 'immer';
-import * as types from '../../actions/actionType';
+import produce from "immer";
+import * as types from "../../actions/actionType";
 
 const initialState = {
     taxes: {
-        data: []
+        data: [],
     }
 };
 
@@ -22,6 +22,25 @@ const TaxesRecipe = (draft = initialState, action) => {
         case types.TAX_LIST_FAILURE:
             break;
 
+        case types.CREATE_TAX_REQUEST:
+            break;
+        case types.CREATE_TAX_SUCCESS:
+            break;
+        case types.CREATE_TAX_FAILURE:
+            break;
+
+        case types.DELETE_TAXESS_REQUEST:
+            break;
+        case types.DELETE_TAXESS_SUCCESS:
+            return {
+                ...draft,
+                taxes: {
+                    ...draft.taxes,
+                    data: draft.taxes.data.filter((item, index) => index !== action.payload),
+                },
+            };
+        case types.DELETE_TAXESS_FAILURE:
+            break;
         default:
             return draft;
     }

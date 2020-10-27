@@ -12,7 +12,7 @@ import { layoutToggele } from '../../redux/actions/layoutAction';
 const { Header } = Layout;
 
 const SiteHeader = (props) => {
-    console.log("props 22", props)
+    
     const dispatch = useDispatch();
 
     const handleMenuClick = ({ key }) => {

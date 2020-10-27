@@ -44,7 +44,7 @@ const Dashboard = () => {
                 </div>
                 <div className="row">
                     <div className="col-md-12">
-                        <Table dataSource={dataSource} columns={columns} />
+                        <Table rowKey={'id'} dataSource={dataSource} columns={columns} />
                     </div>
                 </div>
             </div>

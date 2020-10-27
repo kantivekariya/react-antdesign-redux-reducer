@@ -79,7 +79,6 @@ export function onLocalLogin() {
     const _expiresAt = getLocalState("expires_at");
     const access_token = getLocalState("access_token");
     if (_expiresAt && access_token && new Date().getTime() < _expiresAt) {
-      console.log("_expiresAt", access_token);
       // authorize
       console.log("onLocalLogin - authorize");
       return dispatch(getUserProfile());

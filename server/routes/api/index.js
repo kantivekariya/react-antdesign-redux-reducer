@@ -5,7 +5,7 @@ import { taxRoutes } from "../../module/tax/tax.routes";
 
 const apiRoutes = express.Router();
 
-apiRoutes.get("/", function (req, res, next) {
+apiRoutes.get("/", function(req, res, next) {
   res.json({ message: "from index api" });
 });
 

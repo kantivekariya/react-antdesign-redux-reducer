@@ -1,8 +1,10 @@
-import { Button, Table } from 'antd';
 import React, { useEffect, useRef, useState } from 'react';
+import { Button, Table, Tooltip, Modal } from 'antd';
+import Icon from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllTaxes } from '../../redux/actions/taxes/taxes.action';
+import { addTax, deleteTaxesById, getAllTaxes } from '../../redux/actions/taxes/taxes.action';
 import { AddTaxes } from './addTaxes';
+const { confirm } = Modal;
 
 const Taxes = () => {
     const taxes = useSelector((state) => state.taxesReducer.taxes);
@@ -11,8 +13,15 @@ const Taxes = () => {
     const [isRecord, setRecord] = useState(null);
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        if (isFirstRender.current) {
+            dispatch(getAllTaxes()).then((res) => {
+                isFirstRender.current = false;
+            });
+        }
+    }, [taxes, isShowing]);
+    
     const showModal = () => {
-        console.log("work")
         setRecord(null);
         setState(!isShowing);
     };
@@ -22,24 +31,39 @@ const Taxes = () => {
         setState(!isShowing);
     };
 
-    const handleSubmit = (data) => {
-        console.log("handleSubmit", data)
-        setState(!isShowing);
+    const handleSubmit = async (data) => {
+        dispatch(addTax(data)).then((res) => {
+            isFirstRender.current = true;
+            setState(!isShowing);
+        })
     };
 
     const handleCancel = () => {
         setState(!isShowing);
     };
 
-    useEffect(() => {
-        if (isFirstRender.current) {
-            dispatch(getAllTaxes()).then((res) => {
-                isFirstRender.current = false;
-            });
-        }
-        // eslint-disable-next-line
-    }, []);
 
+
+    const deleteSingleItem = (taxId, taxName) => {
+        confirm({
+            title: `Are you sure to delete ${taxName} Tax ?`,
+            okText: 'Yes',
+            okType: 'danger',
+            cancelText: 'No',
+            onOk() {
+                dispatch(deleteTaxesById(taxId))
+                    .then((res) => {
+                        isFirstRender.current = true;
+                    })
+                    .catch((err) => {
+                        console.log('deleteSelectedItem error', err);
+                    });
+            },
+            onCancel() {
+                console.log('Cancel');
+            },
+        });
+    }
 
     const columns = [
         {
@@ -57,6 +81,30 @@ const Taxes = () => {
             dataIndex: 'taxType',
             key: '3',
         },
+        {
+            title: 'action',
+            dataIndex: 'action',
+            render: (tags, row) => {
+                return (
+                    <span className="justify-content-center">
+                        <Tooltip placement="top" title={`Edit`}>
+                            <Icon
+                                className="mx-2 cursor-pointer"
+                                onClick={() => editShowModal(row)}
+                                component={() => <img alt="Edit" className="action-icon" src={require('../../assets/images/edit.svg')} />}
+                            />
+                        </Tooltip>
+                        <Tooltip placement="top" title={`Delete`}>
+                            <Icon
+                                className="mx-2 cursor-pointer"
+                                onClick={() => deleteSingleItem(row._id, row.taxName)}
+                                component={() => <img alt="delete" className="action-icon" src={require('../../assets/images/delete.svg')} />}
+                            />
+                        </Tooltip>
+                    </span>
+                )
+            }
+        }
     ];
     return (
         <>
@@ -77,7 +125,7 @@ const Taxes = () => {
                 <div className="row">
                     <div className="col-md-12">
                         <Table
-                            rowKey={(record) => record.id}
+                            rowKey={(data) => data._id}
                             dataSource={taxes.data}
                             columns={columns} />
                     </div>
