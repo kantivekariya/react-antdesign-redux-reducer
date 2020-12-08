@@ -1,0 +1,40 @@
+.entry-table {
+    .col-account,
+    .col-item {
+        width: 144px;
+    }
+    .col-desc {
+        width: 174px;
+    }
+    .col-disc,
+    .col-qty {
+        width: 80px;
+    }
+    .col-batch,
+    .col-disc,
+    .col-godown,
+    .col-rate,
+    .col-tax-amt,
+    .col-tax-rate,
+    .col-unit {
+        width: 100px;
+    }
+    .col-account,
+    .col-item {
+        width: 144px;
+    }
+    .col-total {
+        width: 130px;
+    }
+    .col-remove {
+        width: 20px;
+        text-align: center;
+    }
+    .add-field{
+        width: 110px;
+        height: 50px;
+        background: lightgray;
+        color: black;
+        font-weight: 700;
+    }
+}

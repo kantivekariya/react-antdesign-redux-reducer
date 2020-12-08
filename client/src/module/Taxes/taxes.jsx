@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Button, Table, Tooltip, Modal } from 'antd';
 import Icon from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTax, deleteTaxesById, getAllTaxes } from '../../redux/actions/taxes/taxes.action';
+import { addTax, deleteTaxesById, getAllTaxes, updateTaxes } from '../../redux/actions/taxes/taxes.action';
 import { AddTaxes } from './addTaxes';
 const { confirm } = Modal;
 
@@ -10,7 +10,7 @@ const Taxes = () => {
     const taxes = useSelector((state) => state.taxesReducer.taxes);
     const isFirstRender = useRef(true);
     const [isShowing, setState] = useState(false);
-    const [isRecord, setRecord] = useState(null);
+    const [isRecord, setRecord] = useState();
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -19,10 +19,10 @@ const Taxes = () => {
                 isFirstRender.current = false;
             });
         }
-    }, [taxes, isShowing]);
-    
+    }, [taxes, isRecord]);
+
     const showModal = () => {
-        setRecord(null);
+        // setRecord(null);
         setState(!isShowing);
     };
 
@@ -32,17 +32,23 @@ const Taxes = () => {
     };
 
     const handleSubmit = async (data) => {
-        dispatch(addTax(data)).then((res) => {
-            isFirstRender.current = true;
-            setState(!isShowing);
-        })
+        console.log(isRecord)
+        if (isRecord.id) {
+            dispatch(updateTaxes(isRecord.id, data)).then((res) => {
+                isFirstRender.current = false;
+            });
+        } else {
+            dispatch(addTax(data)).then((res) => {
+                isFirstRender.current = true;
+                setState(!isShowing);
+            })
+        }
     };
 
     const handleCancel = () => {
+        setRecord(null);
         setState(!isShowing);
     };
-
-
 
     const deleteSingleItem = (taxId, taxName) => {
         confirm({

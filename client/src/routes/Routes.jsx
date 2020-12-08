@@ -3,7 +3,7 @@ import Login from '../login/Login';
 import Account from '../module/Account/Account';
 import Home from '../module/dashboard';
 import Dashboard from '../module/dashboard/Dashboard';
-import Sales from '../module/sales/sales';
+import Sales from '../module/Sales/sales';
 import Taxes from '../module/Taxes/taxes';
 import Registration from '../registration/Registration';
 import LandingPage from '../site/LandingPage';
